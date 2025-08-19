@@ -154,11 +154,11 @@
         },
         {
             "type": "Microsoft.Cdn/profiles",
-            "apiVersion": "2022-11-01-preview",
+            "apiVersion": "2024-09-01",
             "name": "[parameters('cdnName')]",
             "location": "Global",
             "sku": {
-                "name": "Standard_Microsoft"
+                "name": "Standard_AzureFrontDoor"
             },
             "kind": "cdn",
             "dependsOn": [
@@ -171,7 +171,7 @@
         },
         {
             "type": "Microsoft.Cdn/profiles/endpoints",
-            "apiVersion": "2022-11-01-preview",
+            "apiVersion": "2024-09-01",
             "name": "[concat(parameters('cdnName'), '/', parameters('cdnName'))]",
             "location": "Global",
             "dependsOn": [
@@ -276,7 +276,7 @@
         },
         {
             "type": "Microsoft.Cdn/profiles/endpoints/origins",
-            "apiVersion": "2022-11-01-preview",
+            "apiVersion": "2024-09-01",
             "name": "[concat(parameters('cdnName'), '/', parameters('cdnName'), '/', concat('default-origin-', parameters('cdnName')))]",
             "dependsOn": [
                 "[resourceId('Microsoft.Cdn/profiles/endpoints', parameters('cdnName'), parameters('cdnName'))]",
@@ -301,7 +301,7 @@
         },
         "cdnEndpoint": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.Cdn/profiles/endpoints', parameters('cdnName'), parameters('cdnName')), '2022-11-01-preview').hostName]"
+            "value": "[reference(resourceId('Microsoft.Cdn/profiles/endpoints', parameters('cdnName'), parameters('cdnName')), '2024-09-01').hostName]"
         }    
     }
 }
