@@ -170,7 +170,7 @@
             }
         },
         {
-            "type": "Microsoft.Cdn/profiles/endpoints",
+            "type": "Microsoft.Cdn/profiles/afdEndpoints",
             "apiVersion": "2024-09-01",
             "name": "[concat(parameters('cdnName'), '/', parameters('cdnName'))]",
             "location": "Global",
@@ -275,11 +275,11 @@
             }
         },
         {
-            "type": "Microsoft.Cdn/profiles/endpoints/origins",
+            "type": "Microsoft.Cdn/profiles/afdEndpoints/origins",
             "apiVersion": "2024-09-01",
             "name": "[concat(parameters('cdnName'), '/', parameters('cdnName'), '/', concat('default-origin-', parameters('cdnName')))]",
             "dependsOn": [
-                "[resourceId('Microsoft.Cdn/profiles/endpoints', parameters('cdnName'), parameters('cdnName'))]",
+                "[resourceId('Microsoft.Cdn/profiles/afdEndpoints', parameters('cdnName'), parameters('cdnName'))]",
                 "[resourceId('Microsoft.Cdn/profiles', parameters('cdnName'))]"
             ],
             "properties": {
@@ -301,7 +301,7 @@
         },
         "cdnEndpoint": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.Cdn/profiles/endpoints', parameters('cdnName'), parameters('cdnName')), '2024-09-01').hostName]"
+            "value": "[reference(resourceId('Microsoft.Cdn/profiles/afdEndpoints', parameters('cdnName'), parameters('cdnName')), '2024-09-01').hostName]"
         }    
     }
 }
